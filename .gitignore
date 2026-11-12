@@ -1,0 +1,129 @@
+# ============================================================
+# .gitignore for AI-trading
+# ============================================================
+# IMPORTANT: every file pattern in the "secrets" block below
+# MUST stay ignored. Do not delete or comment any of those lines.
+# If you do, broker credentials will be committed to git history,
+# which is recoverable forever even after a follow-up deletion.
+# ============================================================
+
+# ===== Secrets — NEVER commit =====
+config/secrets.env
+config/secrets.*.env
+config/secrets.yaml
+config/live_gate_token.json
+config/algos.local.yaml
+*.pem
+*.key
+*.p12
+*.pfx
+.env
+.env.*
+!.env.example
+!config/secrets.env.example
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.venv/
+venv/
+ENV/
+env/
+.python-version
+
+# ===== Rust =====
+target/
+Cargo.lock
+*.rs.bk
+
+# ===== Tooling =====
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# ===== Data (large + regenerable) =====
+data/raw/
+data/parquet/
+data/ticks/
+data/options_chain/
+data/*.parquet
+data/*.csv
+data/*.feather
+data/*.sqlite
+data/*.db
+
+# Allow small sample fixtures
+!data/fixtures/
+
+# ===== Logs / runtime artefacts =====
+logs/
+*.log
+*.log.*
+scripts/*.raw.txt
+
+# ===== Kill switch / halt flag (deletable but never committed) =====
+config/kill_switch.flag
+config/HALT.flag
+config/HALT.history.jsonl
+
+# ===== Live trading runtime state =====
+data/live/
+
+# ===== OS / editor =====
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+.idea/
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ===== Misc =====
+*.swp
+*.swo
+*~
+
+# ===== Portfolio-repo additions (root-anchored: code packages named `data` must stay tracked) =====
+/data/
+!/data/fixtures/
+**/_meta/
+breeze_token.json
+breeze_debug/
+/stocks/screener/reports/
+*.zip
+/etfs/data/
+/etfs/state/
+/stocks/screener/data/*
+!/stocks/screener/data/pledge/
+/stocks/screener/data/pledge/*
+!/stocks/screener/data/pledge/pledge.csv.example

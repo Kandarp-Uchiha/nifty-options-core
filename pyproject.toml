@@ -1,0 +1,40 @@
+[project]
+name = "nifty-options-core"
+version = "1.0.0"
+description = "Shared core for NIFTY options research: data loaders, Black-Scholes IV / vol-surface, Indian F&O cost model, backtest helpers, broker abstractions."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Kandarp-Uchiha" }]
+dependencies = [
+    "breeze-connect>=1.0.60",
+    "nselib>=2.5",
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "playwright>=1.45",
+    "pyarrow>=17",
+    "pyotp>=2.9",
+    "scikit-learn>=1.5",
+    "tenacity>=9.0",
+    "xgboost>=2.1",
+    "pyyaml>=6.0",
+    "yfinance>=0.2.50",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.7"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nifty_core"]
